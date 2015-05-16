@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  KeepItOpen
+
+  Created by Loïs Di Qual on 5/13/15.
+  Copyright (c) 2015 Scoop. All rights reserved.
+*/
+
+"drop_card"         = "Drop Off";
+"pickup_card"       = "Pick Up";
+"subtitle_inactive" = "You'll never forget your credit card again.";
+"subtitle_active"   = "You're safe, I got your back.";
+"subtitle_warning"  = "Hey, come back here!";
