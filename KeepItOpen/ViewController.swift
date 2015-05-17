@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     private var cardMarker: GMSMarker?
     private var wasOnboardingShown: Bool = false
     
-    private let RegionRadius: CLLocationDistance = 200
+    private let RegionRadius: CLLocationDistance = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
