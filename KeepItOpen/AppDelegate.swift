@@ -8,6 +8,7 @@
 
 import UIKit
 import ISHPermissionKit
+import Bugsnag
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Bugsnag.startBugsnagWithApiKey("af4463b4faf22e0527493fa0940ce339")
+        GAI.sharedInstance().trackUncaughtExceptions = false
         GAI.sharedInstance().dispatchInterval = 30
         GAI.sharedInstance().trackerWithTrackingId("UA-63132945-1")
         GMSServices.provideAPIKey("AIzaSyBxf_NVKp4cpUVsRgDwkPulNho3nJVOkO0")

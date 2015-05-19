@@ -1,4 +1,7 @@
 PODS:
+  - Bugsnag (4.0.6):
+    - Bugsnag/no-arc (= 4.0.6)
+  - Bugsnag/no-arc (4.0.6)
   - FlatUIKit (1.6.1)
   - Google-Maps-iOS-SDK (1.9.2)
   - GoogleAnalytics-iOS-SDK (3.11):
@@ -10,6 +13,7 @@ PODS:
     - PromiseKit/CorePromise
 
 DEPENDENCIES:
+  - Bugsnag (= 4.0.6)
   - FlatUIKit (= 1.6.1)
   - Google-Maps-iOS-SDK (= 1.9.2)
   - GoogleAnalytics-iOS-SDK (= 3.11)
@@ -17,6 +21,7 @@ DEPENDENCIES:
   - PromiseKit/Swift/Promise (= 2.0.0)
 
 SPEC CHECKSUMS:
+  Bugsnag: ddca4f032072f68f5ff92ed1c6da40843a94693d
   FlatUIKit: c602127a0c4a347e0632b2c5aef5c8c5f386f2cf
   Google-Maps-iOS-SDK: 4c008abdb68e03ae125c7f674be841d369e2b3de
   GoogleAnalytics-iOS-SDK: fb15cc7e3d01d06d531653f37443fda90274d53d
