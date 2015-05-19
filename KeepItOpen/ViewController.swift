@@ -62,7 +62,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     private var cardMarker: GMSMarker?
     private var wasOnboardingShown: Bool = false
     
-    private let RegionRadius: CLLocationDistance = 50
+    private let RegionRadius: CLLocationDistance = 30
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +101,8 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
         super.viewDidAppear(animated)
         
         if !wasOnboardingShown {
-            let onboardingVC = storyboard!.instantiateViewControllerWithIdentifier("OnboardingVC") as! OnboardingVC
+            let identifier   = UIScreen.mainScreen().bounds.height < 600 ? "SmallOnboardingVC" : "OnboardingVC"
+            let onboardingVC = storyboard!.instantiateViewControllerWithIdentifier(identifier) as! OnboardingVC
             presentViewController(onboardingVC, animated: true, completion: nil)
             wasOnboardingShown = true
         }
@@ -117,18 +118,19 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     }
     
     private var reducedPath: CGPath {
-        return pathForCircleRatio(2/3)
+        return maskPath(false)
     }
     
     private var expandedPath: CGPath {
-        return pathForCircleRatio(1.5)
+        return maskPath(true)
     }
     
-    private func pathForCircleRatio(ratio: CGFloat) -> CGPath {
+    private func maskPath(expanded: Bool) -> CGPath {
         let mapViewFrame = mapView.frame
-        let circleSize   = mapViewFrame.height * ratio
-        let rectFrame    = CGRectMake((mapViewFrame.width - circleSize) / 2, (mapViewFrame.width - circleSize) / 2, circleSize, circleSize)
-        let path         = CGPathCreateWithEllipseInRect(rectFrame, nil)
+        let hypotenuse   = sqrt(pow(mapViewFrame.width, 2) + pow(mapViewFrame.height, 2))
+        let circleRadius = expanded ? hypotenuse / 2 : min(mapViewFrame.height / 2 - 8, mapViewFrame.width * 1 / 3)
+        let center       = CGPointMake(mapViewFrame.width / 2, mapViewFrame.height / 2)
+        let path         = UIBezierPath(arcCenter: center, radius: circleRadius, startAngle: 0, endAngle: 2.0 * CGFloat(M_PI), clockwise: true).CGPath
         return path
     }
     
