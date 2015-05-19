@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Scoop. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UITextField {
     func localize() {

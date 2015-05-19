@@ -8,16 +8,16 @@
 
 import UIKit
 import CoreLocation
-import FlatUIKit
+import class FlatUIKit.FUIButton
 
 let LocationNotificationReceived = "LocationNotificationReceived"
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var titleLabel:    UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var mapView:       GMSMapView!
-    @IBOutlet weak var actionButton:  FUIButton!
+    @IBOutlet private weak var titleLabel:    UILabel!
+    @IBOutlet private weak var subtitleLabel: UILabel!
+    @IBOutlet private weak var mapView:       GMSMapView!
+    @IBOutlet private weak var actionButton:  FUIButton!
     
     private var locationManager: CLLocationManager!
     
@@ -42,18 +42,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     private var locationState: LocationState = .Inactive {
         didSet {
-            println("New location state: \(locationState.rawValue)")
+            println("Location state: \(oldValue.rawValue) => \(locationState.rawValue)")
         }
     }
     private var mapState: MapState = .Reduced {
         didSet {
-            println("New map state: \(mapState.rawValue)")
+            println("Map state: \(oldValue.rawValue) => \(mapState.rawValue)")
         }
     }
     
     private var state: State = .Inactive {
         didSet {
-            println("New state: \(state.rawValue)")
+            println("State: \(oldValue.rawValue) => \(state.rawValue)")
         }
     }
     

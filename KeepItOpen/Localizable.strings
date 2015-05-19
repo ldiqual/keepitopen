@@ -6,8 +6,12 @@
   Copyright (c) 2015 Scoop. All rights reserved.
 */
 
-"drop_card"         = "Drop Off";
-"pickup_card"       = "Pick Up";
-"subtitle_inactive" = "You'll never forget your credit card again.";
-"subtitle_active"   = "You're safe, I got your back.";
-"subtitle_warning"  = "Hey, come back here!";
+"drop_card"          = "Open a Tab";
+"pickup_card"        = "Close My Tab";
+"onboarding_details" = "Go to a bar & open a tab.\n\nPress the \"Open a Tab\" button.\n\nI'll warn you if you leave the bar without your card!";
+"subtitle_inactive"  = "You'll never forget your credit card again.";
+"subtitle_active"    = "I'll warn you if you leave your card here.";
+"subtitle_warning"   = "Hey, come back here!";
+"permission_prompt_title" = "Location & Notifications";
+"permission_prompt_details" = "I need the Location permission to locate where your card is, as well as the Notifications permission to warn you when you leave a bar without your card.\nYou can enable this by going to Settings.";
+"permission_prompt_settings" = "Allow in Settings";

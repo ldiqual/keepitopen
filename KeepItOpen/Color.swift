@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Scoop. All rights reserved.
 //
 
-import UIKit
+import class UIKit.UIColor
 
 class Color {
     static let brownColor:  UIColor = UIColor(fromHexCode: "#50514F")

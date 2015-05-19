@@ -165,13 +165,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAg-B1-cgM">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="onboarding_details" translatesAutoresizingMaskIntoConstraints="NO" id="OAg-B1-cgM">
                                 <rect key="frame" x="28" y="370" width="319" height="201"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">Go to a bar &amp; open a tab.
-
-Press the "Drop Off" button. 
-I'll warn you if you leave the bar without your card!</string>
                                 <color key="textColor" red="0.31372549020000001" green="0.31764705879999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -196,6 +192,7 @@ I'll warn you if you leave the bar without your card!</string>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="actionButton" destination="Zxy-ZG-XzM" id="CwQ-zb-dga"/>
+                        <outlet property="detailsTextView" destination="OAg-B1-cgM" id="jna-ic-CpM"/>
                         <outlet property="imageView" destination="sgA-l1-HVK" id="hhy-PV-Msi"/>
                         <outlet property="titleLabel" destination="wxz-K8-ZL0" id="bIb-5A-WbT"/>
                     </connections>
