@@ -454,6 +454,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KeepItOpen/KeepItOpen-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/GoogleAnalytics-iOS-SDK/**";
 			};
 			name = Debug;
 		};
@@ -466,6 +467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KeepItOpen/KeepItOpen-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/GoogleAnalytics-iOS-SDK/**";
 			};
 			name = Release;
 		};

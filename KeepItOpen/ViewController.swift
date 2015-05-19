@@ -12,7 +12,7 @@ import class FlatUIKit.FUIButton
 
 let LocationNotificationReceived = "LocationNotificationReceived"
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
 
     @IBOutlet private weak var titleLabel:    UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!

@@ -11,7 +11,7 @@ import class FlatUIKit.FUIButton
 import ISHPermissionKit
 import PromiseKit
 
-class OnboardingVC: UIViewController {
+class OnboardingVC: GAITrackedViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var detailsTextView: UITextView!

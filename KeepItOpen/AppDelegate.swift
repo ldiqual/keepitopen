@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        GAI.sharedInstance().dispatchInterval = 30
+        GAI.sharedInstance().trackerWithTrackingId("UA-63132945-1")
         GMSServices.provideAPIKey("AIzaSyBxf_NVKp4cpUVsRgDwkPulNho3nJVOkO0")
         return true
     }
