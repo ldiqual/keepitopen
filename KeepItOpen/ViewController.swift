@@ -87,11 +87,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         updateUI(animated: false)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onApplicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onApplicationWillEnterForeground:", name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: LocationNotificationReceived, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -213,6 +216,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         println("Got local notification: \(localNotification)")
     }
     
+    @objc
+    private func onApplicationDidEnterBackground(notification: NSNotification) {
+        if state == .Inactive {
+            println("Stopping location updates")
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    @objc
+    private func onApplicationWillEnterForeground(notification: NSNotification) {
+        if presentedViewController == nil && state != .Active {
+            println("Starting location updates")
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     // MARK: - Location
     
     private func onAnchorLocationDetermined(location: CLLocation) {
@@ -291,6 +310,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
         stopMonitoringRegion()
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }
 

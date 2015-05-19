@@ -106,7 +106,6 @@
 		C03DA9161AF34B5B00025AC4 /* KeepItOpen */ = {
 			isa = PBXGroup;
 			children = (
-				C09E5B791B07F090004D7138 /* Fonts */,
 				C03DA9191AF34B5B00025AC4 /* AppDelegate.swift */,
 				C03DA91B1AF34B5B00025AC4 /* ViewController.swift */,
 				C0E2BC6F1B046FD30077BE21 /* OnboardingVC.swift */,
@@ -115,6 +114,7 @@
 				C03DA91D1AF34B5B00025AC4 /* Main.storyboard */,
 				C03DA9201AF34B5B00025AC4 /* Images.xcassets */,
 				C03DA9221AF34B5B00025AC4 /* LaunchScreen.xib */,
+				C09E5B791B07F090004D7138 /* Fonts */,
 				C03DA9171AF34B5B00025AC4 /* Supporting Files */,
 			);
 			path = KeepItOpen;
