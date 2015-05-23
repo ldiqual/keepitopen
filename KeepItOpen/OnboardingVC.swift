@@ -17,8 +17,8 @@ class OnboardingVC: GAITrackedViewController {
     @IBOutlet private weak var detailsTextView: UITextView!
     @IBOutlet private weak var actionButton: FUIButton!
     
-    let locationPermissionRequest = ISHPermissionRequest(forCategory: .LocationAlways)
-    let notificationPermissionRequest = ISHPermissionRequest(forCategory: .NotificationLocal)
+    static let locationPermissionRequest = ISHPermissionRequest(forCategory: .LocationAlways)
+    static let notificationPermissionRequest = ISHPermissionRequest(forCategory: .NotificationLocal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class OnboardingVC: GAITrackedViewController {
     
 	private func requestPermissions() {
         Promise<Void> { fulfill, reject in
-            self.locationPermissionRequest.requestUserPermissionWithCompletionBlock { request, state, error in
+            OnboardingVC.locationPermissionRequest.requestUserPermissionWithCompletionBlock { request, state, error in
                 if error != nil || state != .Authorized {
                     reject(error)
                     return
@@ -46,7 +46,7 @@ class OnboardingVC: GAITrackedViewController {
             }
         }.then {
             return Promise<Void> { fulfill, reject in
-                self.notificationPermissionRequest.requestUserPermissionWithCompletionBlock { request, state, error in
+                OnboardingVC.notificationPermissionRequest.requestUserPermissionWithCompletionBlock { request, state, error in
                     if error != nil || state != .Authorized {
                         reject(error)
                         return

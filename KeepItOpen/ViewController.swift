@@ -60,7 +60,11 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     private var anchorLocation: CLLocation?
     private var regionBeingMonitored: CLRegion?
     private var cardMarker: GMSMarker?
-    private var wasOnboardingShown: Bool = false
+    
+    private var shouldShowOnboarding: Bool {
+        return OnboardingVC.locationPermissionRequest.permissionState() != .Authorized ||
+               OnboardingVC.notificationPermissionRequest.permissionState() != .Authorized
+    }
     
     private let RegionRadius: CLLocationDistance = 30
     
@@ -100,11 +104,10 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !wasOnboardingShown {
+        if shouldShowOnboarding {
             let identifier   = UIScreen.mainScreen().bounds.height < 600 ? "SmallOnboardingVC" : "OnboardingVC"
             let onboardingVC = storyboard!.instantiateViewControllerWithIdentifier(identifier) as! OnboardingVC
             presentViewController(onboardingVC, animated: true, completion: nil)
-            wasOnboardingShown = true
         }
     }
     
