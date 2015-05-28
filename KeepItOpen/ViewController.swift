@@ -270,7 +270,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
             if state == .Active {
                 onAnchorLocationDetermined(location)
             }
-            else {
+            else if state == .Warning {
                 onLocationDeterminedInWarningState(location)
             }
         }
