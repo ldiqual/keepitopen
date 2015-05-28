@@ -6,6 +6,6 @@ Keep It Open is an iOS app that warns you when you leave a bar without your cred
 Screenshots
 -----------
 
-<img style="width:30%" src="https://www.dropbox.com/s/5ksbfxfueh1c0i9/IMG_4180.PNG?raw=1">
-<img style="width:30%" src="https://www.dropbox.com/s/q6t7yalbe0tnxse/IMG_4183.PNG?raw=1">
-<img style="width:30%" src="https://www.dropbox.com/s/p6ujir0apmzfed3/IMG_4181.PNG?raw=1">
+![](https://www.dropbox.com/s/xuyql0xuscbn13a/s1.png?raw=1)
+![](https://www.dropbox.com/s/fqp5wxd93trp3wg/s2.png?raw=1)
+![](https://www.dropbox.com/s/8zzuurv7cak8dma/s3.png?raw=1)
