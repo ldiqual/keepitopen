@@ -57,7 +57,7 @@ class OnboardingVC: GAITrackedViewController {
         }.then {
             self.dismissViewControllerAnimated(true, completion: nil)
         }.catch { error in
-            println("Couldn't get the appropriate permissions: \(error)")
+            CLS_LOG_SWIFT("Couldn't get the appropriate permissions: \(error)")
             let alertController = UIAlertController(title: "permission_prompt_title".localize(), message: "permission_prompt_details".localize(), preferredStyle: .Alert)
             alertController.addAction(UIAlertAction(title: "permission_prompt_settings".localize(), style: .Default) { _ in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)

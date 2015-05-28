@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 extension UITextField {
     func localize() {
@@ -57,4 +58,12 @@ extension String {
     func localize() -> String {
         return NSLocalizedString(self, comment: "")
     }
+}
+
+func CLS_LOG_SWIFT( _ format: String = "", _ args:[CVarArgType] = [], file: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__) {
+    #if DEBUG
+        CLSNSLogv("\(file.lastPathComponent.stringByDeletingPathExtension).\(function) line \(line) $ \(format)", getVaList(args))
+    #else
+        CLSLogv("\(file.lastPathComponent.stringByDeletingPathExtension).\(function) line \(line) $ \(format)", getVaList(args))
+    #endif
 }

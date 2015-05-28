@@ -42,18 +42,18 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     
     private var locationState: LocationState = .Inactive {
         didSet {
-            println("Location state: \(oldValue.rawValue) => \(locationState.rawValue)")
+            CLS_LOG_SWIFT("Location state: \(oldValue.rawValue) => \(locationState.rawValue)")
         }
     }
     private var mapState: MapState = .Reduced {
         didSet {
-            println("Map state: \(oldValue.rawValue) => \(mapState.rawValue)")
+            CLS_LOG_SWIFT("Map state: \(oldValue.rawValue) => \(mapState.rawValue)")
         }
     }
     
     private var state: State = .Inactive {
         didSet {
-            println("State: \(oldValue.rawValue) => \(state.rawValue)")
+            CLS_LOG_SWIFT("State: \(oldValue.rawValue) => \(state.rawValue)")
         }
     }
     
@@ -145,7 +145,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     }
     
     private func updateUI(animated: Bool = true) {
-        println("Updating UI for state \(state.rawValue)")
+        CLS_LOG_SWIFT("Updating UI for state \(state.rawValue)")
         
         if state == .Inactive {
             mapView.clear()
@@ -183,7 +183,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     
     @objc
     private func actionButtonPressed(button: UIButton) {
-        println("Action button pressed while state was \(state.rawValue)")
+        CLS_LOG_SWIFT("Action button pressed while state was \(state.rawValue)")
         
         if state == .Active {
             stopMonitoringRegion()
@@ -218,13 +218,13 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     @objc
     private func onLocalNotificationReceived(notification: NSNotification) {
         let localNotification = notification.object as! UILocalNotification
-        println("Got local notification: \(localNotification)")
+        CLS_LOG_SWIFT("Got local notification: \(localNotification)")
     }
     
     @objc
     private func onApplicationDidEnterBackground(notification: NSNotification) {
         if state == .Inactive {
-            println("Stopping location updates")
+            CLS_LOG_SWIFT("Stopping location updates")
             locationManager.stopUpdatingLocation()
         }
     }
@@ -232,7 +232,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     @objc
     private func onApplicationWillEnterForeground(notification: NSNotification) {
         if presentedViewController == nil && state != .Active {
-            println("Starting location updates")
+            CLS_LOG_SWIFT("Starting location updates")
             locationManager.startUpdatingLocation()
         }
     }
@@ -240,7 +240,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     // MARK: - Location
     
     private func onAnchorLocationDetermined(location: CLLocation) {
-        println("Anchor location: \(location)")
+        CLS_LOG_SWIFT("Anchor location: \(location)")
     	anchorLocation = location
     	regionBeingMonitored = CLCircularRegion(center: anchorLocation!.coordinate, radius: RegionRadius, identifier: "myCardRegion")
     	locationManager.stopUpdatingLocation()
@@ -282,7 +282,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     // MARK: - Region Monitoring
     
     private func stopMonitoringRegion() {
-        println("Stopping region monitoring")
+        CLS_LOG_SWIFT("Stopping region monitoring")
         
         if let regionBeingMonitored = regionBeingMonitored {
             locationManager.stopMonitoringForRegion(regionBeingMonitored)
@@ -297,11 +297,11 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         
         if regionBeingMonitored == nil {
-            println("Ignoring region exit: \(region)")
+            CLS_LOG_SWIFT("Ignoring region exit: \(region)")
             return
         }
         
-        println("Went out of region \(region)")
+        CLS_LOG_SWIFT("Went out of region \(region)")
         
         locationState = .WaitingForLocation
         state = .Warning
