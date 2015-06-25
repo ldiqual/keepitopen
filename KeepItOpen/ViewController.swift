@@ -39,6 +39,7 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     }
     
     private var isMaskInitted: Bool = false
+    private var viewDidAppearOnce = false
     
     private var locationState: LocationState = .Inactive {
         didSet {
@@ -104,11 +105,14 @@ class ViewController: GAITrackedViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if shouldShowOnboarding {
+        
+        if !viewDidAppearOnce && shouldShowOnboarding {
             let identifier   = UIScreen.mainScreen().bounds.height < 600 ? "SmallOnboardingVC" : "OnboardingVC"
             let onboardingVC = storyboard!.instantiateViewControllerWithIdentifier(identifier) as! OnboardingVC
             presentViewController(onboardingVC, animated: true, completion: nil)
         }
+        
+        viewDidAppearOnce = true
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -39,6 +39,7 @@ class OnboardingVC: GAITrackedViewController {
         Promise<Void> { fulfill, reject in
             OnboardingVC.locationPermissionRequest.requestUserPermissionWithCompletionBlock { request, state, error in
                 if error != nil || state != .Authorized {
+                    let error = error ?? NSError(domain: "com.loisdiqual.keepitopen", code: 500, userInfo: [NSLocalizedDescriptionKey: "User has denied location tracking"])
                     reject(error)
                     return
                 }
@@ -48,6 +49,7 @@ class OnboardingVC: GAITrackedViewController {
             return Promise<Void> { fulfill, reject in
                 OnboardingVC.notificationPermissionRequest.requestUserPermissionWithCompletionBlock { request, state, error in
                     if error != nil || state != .Authorized {
+                        let error = error ?? NSError(domain: "com.loisdiqual.keepitopen", code: 500, userInfo: [NSLocalizedDescriptionKey: "User has denied notifications"])
                         reject(error)
                         return
                     }
@@ -59,9 +61,18 @@ class OnboardingVC: GAITrackedViewController {
         }.catch { error in
             CLS_LOG_SWIFT("Couldn't get the appropriate permissions: \(error)")
             let alertController = UIAlertController(title: "permission_prompt_title".localize(), message: "permission_prompt_details".localize(), preferredStyle: .Alert)
+            
+            // Ignore
+            alertController.addAction(UIAlertAction(title: "permission_prompt_ignore".localize(), style: .Cancel) { _ in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            
+            // Go to settings
             alertController.addAction(UIAlertAction(title: "permission_prompt_settings".localize(), style: .Default) { _ in
                 UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
             })
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
